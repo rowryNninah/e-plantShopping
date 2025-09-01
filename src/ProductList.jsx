@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
+import { useDispatch } from 'react-redux';
 import { addItem } from './CartSlice';
+
+const dispatch = useDispatch();
 
 function ProductList({ onHomeClick }) {
     const [showCart, setShowCart] = useState(false);
@@ -237,7 +240,7 @@ function ProductList({ onHomeClick }) {
 
     const [cart, setAddedToCart] = useState({})
     const handleAddToCart = (plant) =>{
-        dispatchEvent(addItem(plant));
+        dispatch(addItem(plant));
         setAddedToCart((prevObject)=>({
             ...prevObject, [plant.name]: true,
         }))
